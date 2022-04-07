@@ -1,7 +1,6 @@
 package common;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
 /**Universidad del Valle de Guatemala
  * Facultad de Ingenieria
@@ -19,7 +18,7 @@ import java.io.FileReader;
  * @author Diego Alexander Hernández Silvestre
  */
 
-public class Read {
+public class Archive {
     /**
      * Método empleado para leer archivos.
      * @param path Direccion en la que se encuentra el archivo
@@ -38,8 +37,24 @@ public class Read {
         } catch (Exception e){
             System.out.println("[ERROR]. El archivo no fue encontrado");
         }
-
         return texto;
+    }
 
+    public void writer(String cadena, String path){
+        String texto = "";
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(path));
+            String temp = "";
+            String bflinea;
+            while ((bflinea = bf.readLine()) != null){
+                temp += bflinea + "\n";
+            }
+            texto = temp + cadena;
+            BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+            bw.write(texto + "\r\n");
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("[ERROR]. No se pudo encontrar el archivo");
+        }
     }
 }

@@ -6,12 +6,14 @@ import tree.TextComparator;
 import java.util.ArrayList;
 
 public class Controller {
+
+    //Arboles binarios de búsqueda.
     BinarySearchTree<String,String> englishTree = new BinarySearchTree<String,String>(new TextComparator<String>());
     BinarySearchTree<String,String> frenchTree = new BinarySearchTree<String,String>(new TextComparator<String>());
 
     /**
      * Añadir traducciones a los diccionarios.
-     * @param diccionario Cadena de texto obtenida por la clase de lectura.
+     * @param diccionario Cadena de texto obtenida por la clase de archivo.
      */
     public void addDictionaryToTree(String diccionario){
         String[] renglon = diccionario.split("\n");
@@ -26,22 +28,29 @@ public class Controller {
         }
     }
 
-
+    /**
+     * Mostrar las palabras en español que reconoce cada diccionario.
+     * @return Cadena con las palabras.
+     */
     public String showDictionary(){
         String fin;
         ArrayList<String> data = englishTree.getElements();
-        String infoI = "INGLES: ";
+        String infoI = "EN INGLES:\n";
         for (String palabra: data){
-            infoI += palabra + " ";
+            infoI += "- " + palabra + "\n";
         }
 
         ArrayList<String> data1 = frenchTree.getElements();
-        String infoF = "FRANCES: ";
+        String infoF = "EN FRANCES:\n";
         for (String palabra: data1){
-            infoF += palabra + " ";
+            infoF += "- " + palabra + "\n";
         }
-        fin = infoI + infoF;
+        fin = infoI + "\n" + infoF;
         return fin;
     }
 
+    public void insertWordInTrees(String spanish, String english, String french){
+        englishTree.insert(english,spanish);
+        frenchTree.insert(english,spanish);
+    }
 }
