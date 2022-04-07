@@ -1,3 +1,5 @@
+package tree;
+
 import java.util.Comparator;
 
 public class TextComparator<K> implements Comparator<K> {
@@ -6,6 +8,6 @@ public class TextComparator<K> implements Comparator<K> {
     public int compare(K o1, K o2) {
         String p1 = o1.toString();
         String p2 = o2.toString();
-        return 0;
+        return p1.compareTo(p2);
     }
 }
