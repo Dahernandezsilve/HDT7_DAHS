@@ -1,16 +1,12 @@
-package tree; /**
-     *
-     */
-
-import tree.TreeNode;
+package tree;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
-    /**
-     * @author MAAG
-     *
-     */
+/**
+ * Créditos a Moises Antonio Alonso Gonzalez
+ * @author MAAG
+ */
 public class BinarySearchTree<K, V> implements IBinarySearchTree<K, V> {
 
     private int count;

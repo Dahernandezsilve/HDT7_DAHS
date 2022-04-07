@@ -5,6 +5,21 @@ import tree.TextComparator;
 
 import java.util.ArrayList;
 
+/**Universidad del Valle de Guatemala
+ * Facultad de Ingenieria
+ * Departamento de Ciencia de la Computacion.
+ * Algoritmos y Estructuras de datos.
+ * Sección: 20
+ *
+ * Hoja de Trabajo #7
+ *
+ * Entorno: Generar un diccionario que permita la traduccion de palabras mediante Binary Search Trees.
+ * Clase: Controller
+ * Proposito: Crear y manipular los Binary Search Trees.
+ *
+ * @version 1.0
+ * @author Diego Alexander Hernández Silvestre
+ */
 public class Controller {
 
     //Arboles binarios de búsqueda.
@@ -49,8 +64,14 @@ public class Controller {
         return fin;
     }
 
+    /**
+     * Método empleado para insertar nuevas palabras a los arboles.
+     * @param spanish Palabra en espaniol.
+     * @param english Palabra en ingles.
+     * @param french Palabra en frances.
+     */
     public void insertWordInTrees(String spanish, String english, String french){
         englishTree.insert(english,spanish);
-        frenchTree.insert(english,spanish);
+        frenchTree.insert(french,spanish);
     }
 }

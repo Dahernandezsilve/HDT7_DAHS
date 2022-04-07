@@ -8,17 +8,18 @@ import java.io.*;
  * Algoritmos y Estructuras de datos.
  * Sección: 20
  *
- * Hoja de Trabajo #4
+ * Hoja de Trabajo #7
  *
- * Entorno: El ejercicio tiene como objetivo, traducir del formato Infix to Postfix y devolver el resultado de la operacion.
+ * Entorno: Generar un diccionario que permita la traduccion de palabras mediante Binary Search Trees.
  * Clase: Lectura
- * Proposito: Leer el archivo ingresado con el nombre datos.txt.
+ * Proposito: Leer archivos ingresados.
  *
  * @version 1.0
  * @author Diego Alexander Hernández Silvestre
  */
 
 public class Archive {
+
     /**
      * Método empleado para leer archivos.
      * @param path Direccion en la que se encuentra el archivo
@@ -40,6 +41,11 @@ public class Archive {
         return texto;
     }
 
+    /**
+     * Clase encargada de escribir datos en el archivo.
+     * @param cadena Datos o cadena a ingresar.
+     * @param path Direccion del archivo.
+     */
     public void writer(String cadena, String path){
         String texto = "";
         try {
@@ -57,4 +63,5 @@ public class Archive {
             System.out.println("[ERROR]. No se pudo encontrar el archivo");
         }
     }
+
 }
