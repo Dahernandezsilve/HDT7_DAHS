@@ -101,6 +101,11 @@ public class DriverProgram {
                     english = s.nextLine();
                     System.out.println("\nIngrese la palabra que desea colocar en el lugar de la seleccionada (en frances): ");
                     french = s.nextLine();
+                    if (c.editeWordInTree(find, spanish, english, french)){
+                        System.out.println("\nFelicidades! Su palabra ha sido editada con exito!\n");
+                    } else {
+                        System.out.println("\nLo siento, no se encontro su palabra!\n");
+                    }
 
                     break;
 

@@ -75,11 +75,39 @@ public class Controller {
         frenchTree.insert(french,spanish);
     }
 
-    public void editeWordInTree(String find, String spanish, String english, String french) {
+    /**
+     * Metodo encargado de editar una palabra en los arboles
+     * @param find Palabra a editar.
+     * @param spanish Palabra en espaniol nueva.
+     * @param english Palabra en ingles nueva.
+     * @param french Palabra en frances nueva.
+     * @return
+     */
+    public boolean editeWordInTree(String find, String spanish, String english, String french) {
+        boolean result = false;
+        ArrayList<String> dataEnglish = englishTree.getElements();
+        ArrayList<String> dataFrench = frenchTree.getElements();
+        String[] line;
+        for (String wordE: dataEnglish){
+            line = wordE.split("=");
+            if (line[1].equals(find)){
+                result = true;
+                englishTree.delete(line[0]);
+            }
+        }
+        for (String wordF: dataFrench){
+            line = wordF.split("=");
+            if (line[1].equals(find)){
+                result = true;
+                frenchTree.delete(line[0]);
+            }
+        }
+        insertWordInTrees(spanish, english, french);
+        return result;
     }
 
     /**
-     *
+     * Método empleado para eliminar una palabra indicada por los usuarios, en el arbol.
      * @param find
      */
     public boolean deleteWordInTree(String find){
@@ -94,7 +122,6 @@ public class Controller {
                 englishTree.delete(line[0]);
             }
         }
-
         for (String wordF: dataFrench){
             line = wordF.split("=");
             if (line[1].equals(find)){
