@@ -6,15 +6,15 @@ package tree;
  * @param <K>
  * @param <V>
  */
-public class TreeNode <K, V>
+public class Association <K, V>
 {
     private V value;
     private K id;
-    private TreeNode<K, V> left;
-    private TreeNode<K, V> right;
-    private TreeNode<K, V> parent;
+    private Association<K, V> left;
+    private Association<K, V> right;
+    private Association<K, V> parent;
 
-    public TreeNode(K id, V value) {
+    public Association(K id, V value) {
         setId(id);
         setValue(value);
         setLeft(null);
@@ -49,37 +49,37 @@ public class TreeNode <K, V>
     /**
      * @return the left
      */
-    public TreeNode<K, V> getLeft() {
+    public Association<K, V> getLeft() {
         return left;
     }
     /**
      * @param left the left to set
      */
-    public void setLeft(TreeNode<K, V> left) {
+    public void setLeft(Association<K, V> left) {
         this.left = left;
     }
     /**
      * @return the right
      */
-    public TreeNode<K, V> getRight() {
+    public Association<K, V> getRight() {
         return right;
     }
     /**
      * @param right the right to set
      */
-    public void setRight(TreeNode<K, V> right) {
+    public void setRight(Association<K, V> right) {
         this.right = right;
     }
     /**
      * @return the parent
      */
-    public TreeNode<K, V> getParent() {
+    public Association<K, V> getParent() {
         return parent;
     }
     /**
      * @param parent the parent to set
      */
-    public void setParent(TreeNode<K, V> parent) {
+    public void setParent(Association<K, V> parent) {
         this.parent = parent;
     }
 }

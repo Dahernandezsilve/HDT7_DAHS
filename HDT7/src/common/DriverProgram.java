@@ -34,8 +34,10 @@ public class DriverProgram {
         c.addDictionaryToTree(diccionario);
 
         //Variables requeridas por el sistema
-        int eleccion;
+        int election;
+        int electionLanguage;
         boolean exit = false;
+        String find;
         String spanish;
         String english;
         String french;
@@ -70,18 +72,18 @@ public class DriverProgram {
             System.out.println("[3]. Eliminar una palabra.");
             System.out.println("[4]. Mostrar palabras.");
             System.out.println("[5]. Cerrar el diccionario.");
-            eleccion = s.nextInt();
+            election = s.nextInt();
             s.nextLine();
 
             //Decision
-            switch (eleccion){
+            switch (election){
                 case 1:
                     //Ingreso de palabras
                     System.out.println("\nEntendido. Por favor, ingrese la palabra en espaniol: ");
                     spanish = s.nextLine();
                     System.out.println("\nAhora, ingrese su traduccion al ingles: ");
                     english = s.nextLine();
-                    System.out.println("\nFinalmente, su traduccion al espaniol: ");
+                    System.out.println("\nFinalmente, su traduccion al frances: ");
                     french = s.nextLine();
                     c.insertWordInTrees(spanish,english,french);
                     cadena = spanish.trim() + "," + english.trim() + "," + french.trim();
@@ -91,10 +93,26 @@ public class DriverProgram {
 
                 case 2:
                     //Editar palabras
+                    System.out.println("\nIngrese la palabra que desea modificar en espaniol: ");
+                    find = s.nextLine();
+                    System.out.println("\nIngrese la palabra que desea colocar en el lugar de la seleccionada (en espaniol): ");
+                    spanish = s.nextLine();
+                    System.out.println("\nIngrese la palabra que desea colocar en el lugar de la seleccionada (en ingles): ");
+                    english = s.nextLine();
+                    System.out.println("\nIngrese la palabra que desea colocar en el lugar de la seleccionada (en frances): ");
+                    french = s.nextLine();
+
                     break;
 
                 case 3:
                     //Eliminar palabras
+                    System.out.println("\nPor favor, ingrese la palabra que desea eliminar en espaniol: ");
+                    find = s.nextLine();
+                    if (c.deleteWordInTree(find)){
+                        System.out.println("\nSe elimino correctamente su palabra!\n");
+                    } else {
+                        System.out.println("\nNo se encontro la palabra :(\n");
+                    }
                     break;
 
                 case 4:

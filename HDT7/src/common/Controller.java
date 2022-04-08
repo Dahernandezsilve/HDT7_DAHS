@@ -35,10 +35,10 @@ public class Controller {
         for (String traducciones: renglon){
             String[] palabras = traducciones.split(",");
             if (!palabras[0].equals(" ") && !palabras[1].equals(" ")){
-                englishTree.insert(palabras[0], palabras[1]);
+                englishTree.insert(palabras[0].toLowerCase(), palabras[1].toLowerCase());
             }
             if (!palabras[0].equals(" ") && !palabras[1].equals(" ")){
-                frenchTree.insert(palabras[2], palabras[1]);
+                frenchTree.insert(palabras[2].toLowerCase(), palabras[1].toLowerCase());
             }
         }
     }
@@ -74,4 +74,35 @@ public class Controller {
         englishTree.insert(english,spanish);
         frenchTree.insert(french,spanish);
     }
+
+    public void editeWordInTree(String find, String spanish, String english, String french) {
+    }
+
+    /**
+     *
+     * @param find
+     */
+    public boolean deleteWordInTree(String find){
+        boolean result = false;
+        ArrayList<String> dataEnglish = englishTree.getElements();
+        ArrayList<String> dataFrench = frenchTree.getElements();
+        String[] line;
+        for (String wordE: dataEnglish){
+            line = wordE.split("=");
+            if (line[1].equals(find)){
+                result = true;
+                englishTree.delete(line[0]);
+            }
+        }
+
+        for (String wordF: dataFrench){
+            line = wordF.split("=");
+            if (line[1].equals(find)){
+                result = true;
+                frenchTree.delete(line[0]);
+            }
+        }
+        return result;
+    }
+
 }
