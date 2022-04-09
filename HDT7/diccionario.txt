@@ -2,5 +2,3 @@ house,casa,loger
 homework,tarea,devoirs
 woman,mujer,femme
 town,pueblo,ville
-hello,hola,salut
-dog,perro,chien

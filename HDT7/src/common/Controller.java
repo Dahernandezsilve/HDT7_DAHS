@@ -4,7 +4,6 @@ import tree.BinarySearchTree;
 import tree.TextComparator;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**Universidad del Valle de Guatemala
  * Facultad de Ingenieria
@@ -67,41 +66,6 @@ public class Controller {
         fin = infoI + "\n" + infoF;
         return fin;
     }
-    /**
-    public String resultToWriter() {
-
-        String result = "";
-
-        //Datos de los arboles
-        ArrayList<String> data = englishTree.getElements();
-        ArrayList<String> data1 = frenchTree.getElements();
-        int count = englishTree.count();
-
-        System.out.println(count);
-        //Palabras de cada idioma
-        ArrayList<String> wordsE = new ArrayList<>();
-        ArrayList<String> wordsF = new ArrayList<>();
-        ArrayList<String> wordsS = new ArrayList<>();
-
-        String[] line;
-        for (String palabra: data){
-            line = palabra.split("=");
-            wordsE.add(line[0]);
-            wordsS.add(line[1]);
-        }
-        for (String palabra: data1){
-            line = palabra.split("=");
-            wordsF.add(line[0]);
-        }
-
-        int i=0;
-        while (i<count){
-            result += wordsE.get(i) + "," + wordsS.get(i) + "," + wordsF.get(i) + "\n";
-            i += 1;
-        }
-
-        return result;
-        }**/
 
     /**
      * Se encarga de ingresar valores al diccionario (listado).
@@ -111,9 +75,6 @@ public class Controller {
         String[] elementos = cadena.split("\n");
         for (String elemento: elementos){
             diccionario.add(elemento);
-        }
-        for (String d: diccionario){
-            System.out.println(d);
         }
     }
 
@@ -126,7 +87,6 @@ public class Controller {
         for (String line: diccionario){
             cadena += line + "\n";
         }
-        System.out.println(cadena);
         return cadena;
     }
     /**
@@ -135,17 +95,17 @@ public class Controller {
      * @param english Palabra en ingles.
      * @param french Palabra en frances.
      */
-    public void insertWordInTrees(String spanish, String english, String french){
+    public String insertWordInTrees(String spanish, String english, String french){
         englishTree.insert(english.toLowerCase().trim(),spanish.toLowerCase().trim());
         frenchTree.insert(french.toLowerCase().trim(),spanish.toLowerCase().trim());
         String cadena = english.toLowerCase().trim() + "," + spanish.toLowerCase().trim() + "," + french.toLowerCase().trim();
         diccionario.add(cadena);
+        String result = "funciona";
         String update = updatedDictionary();
         diccionario.clear();
-        System.out.println("INSERTAR:");
         writerInDictionary(update);
         a.writer(update, "diccionario.txt");
-
+        return result;
     }
 
     /**
@@ -192,16 +152,12 @@ public class Controller {
 
         String cadena = english.toLowerCase().trim() + "," + spanish.toLowerCase().trim() + "," + french.toLowerCase().trim();
         if (bandera){
-            System.out.println(indexF);
             diccionario.remove(indexF);
             diccionario.add(cadena);
         }
 
         String update = updatedDictionary();
         diccionario.clear();
-
-        System.out.println("DICCIONARIO actualizado: " + update + "\n");
-        System.out.println("ESCRITURA: ");
         writerInDictionary(update);
         a.writer(update, "diccionario.txt");
 
@@ -243,13 +199,11 @@ public class Controller {
             }
         }
         if (bandera){
-            System.out.println("SI INGRESA");
             diccionario.remove(eliminateIndex);
         }
 
         String update = updatedDictionary();
         diccionario.clear();
-        System.out.println("ELIMINAR");
         writerInDictionary(update);
         a.writer(update, "diccionario.txt");
 
