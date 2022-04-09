@@ -42,22 +42,15 @@ public class Archive {
     }
 
     /**
-     * Clase encargada de escribir datos en el archivo.
+     * Clase encargada de escribir nuevos datos en el archivo.
      * @param cadena Datos o cadena a ingresar.
      * @param path Direccion del archivo.
      */
     public void writer(String cadena, String path){
-        String texto = "";
+        String texto = cadena;
         try {
-            BufferedReader bf = new BufferedReader(new FileReader(path));
-            String temp = "";
-            String bflinea;
-            while ((bflinea = bf.readLine()) != null){
-                temp += bflinea + "\n";
-            }
-            texto = temp + cadena;
             BufferedWriter bw = new BufferedWriter(new FileWriter(path));
-            bw.write(texto + "\r\n");
+            bw.write(cadena);
             bw.close();
         } catch (IOException e) {
             System.out.println("[ERROR]. No se pudo encontrar el archivo");

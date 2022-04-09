@@ -31,7 +31,9 @@ public class DriverProgram {
 
         //Lectura e ingreso de datos.
         String diccionario = a.lector("diccionario.txt");
+        String sentence = a.lector("texto.txt");
         c.addDictionaryToTree(diccionario);
+        c.writerInDictionary(diccionario);
 
         //Variables requeridas por el sistema
         int election;
@@ -71,7 +73,8 @@ public class DriverProgram {
             System.out.println("[2]. Editar una palabra.");
             System.out.println("[3]. Eliminar una palabra.");
             System.out.println("[4]. Mostrar palabras.");
-            System.out.println("[5]. Cerrar el diccionario.");
+            System.out.println("[5]. Traducir oracion ingresada por archivo al espaniol.");
+            System.out.println("[6]. Cerrar el diccionario.");
             election = s.nextInt();
             s.nextLine();
 
@@ -86,8 +89,7 @@ public class DriverProgram {
                     System.out.println("\nFinalmente, su traduccion al frances: ");
                     french = s.nextLine();
                     c.insertWordInTrees(spanish,english,french);
-                    cadena = spanish.trim() + "," + english.trim() + "," + french.trim();
-                    a.writer(cadena,"diccionario.txt");
+                    //cadena = english.toLowerCase().trim() + "," + spanish.toLowerCase().trim() + "," + french.toLowerCase().trim();
                     System.out.println("\nNueva palabra insertada con exito!\n");
                     break;
 
@@ -121,11 +123,21 @@ public class DriverProgram {
                     break;
 
                 case 4:
-                    //Mostras palabras
+                    //Mostrar palabras
                     System.out.println("\n" + c.showDictionary() + "\n");
+
                     break;
 
                 case 5:
+                    //Traducir oraciones al espaniol.
+                    System.out.println("\nLas palabras que el diccionario no pueda traducir se estableceran entre asteriscos.");
+                    System.out.println("La traduccion que se encuentra el archivo es: \n");
+                    System.out.println("[ORACION ORIGINAL]: "+ sentence);
+
+                    System.out.println("La traduccion de su oracion al espaniol es: ");
+                    System.out.println("[ORACION TRADUCIDA]: " + c.translateSentenceToSpanish(sentence)+ "\n");
+                    break;
+                case 6:
                     //Salir
                     System.out.println("Cerrando el diccionario...");
                     exit = true;
@@ -133,5 +145,4 @@ public class DriverProgram {
             }
         }
     }
-
 }
